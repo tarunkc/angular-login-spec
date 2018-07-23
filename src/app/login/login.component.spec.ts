@@ -1,9 +1,13 @@
 /* tslint:disable:no-unused-variable */
 
 import {TestBed, ComponentFixture} from '@angular/core/testing';
+import { BrowserModule } from '@angular/platform-browser';
 import {ReactiveFormsModule, FormsModule} from "@angular/forms";
 import { LoginComponent } from "./login.component";
 import { User } from "../_modules/user";
+import { routing }  from '../app.routing';
+import { APP_BASE_HREF } from '@angular/common';
+import { HomeComponent } from '../home';
 
 
 describe('Component: Login', () => {
@@ -15,8 +19,14 @@ describe('Component: Login', () => {
 
     // refine the test module by declaring the test component
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, FormsModule],
-      declarations: [LoginComponent]
+      imports: [
+        BrowserModule,
+        routing,
+        FormsModule,
+        ReactiveFormsModule
+      ],
+      declarations: [LoginComponent, HomeComponent],
+      providers: [{provide: APP_BASE_HREF, useValue : '/' }]
     });
 
     // create component and test fixture
